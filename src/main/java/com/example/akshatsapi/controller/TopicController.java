@@ -13,25 +13,25 @@ public class TopicController {
     private TopicService topicService;
 
     // localhost:8080/
-    @RequestMapping("/")
+    @RequestMapping(value = "/")
     public String home() {
-        return "Welcome to my backend proj!";
+        return "Welcome to Course-API!";
     }
 
     // localhost:8080/topics
-    @RequestMapping(value = "/topics", method = RequestMethod.GET)
+    @RequestMapping(value = "/topics")
     public List<Topic> getAllTopics() {
         return topicService.getAllTopics();
     }
 
-    @RequestMapping(value = "/topics/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/topics/{id}")
     public Topic getTopicById(@PathVariable String id) {
         return topicService.getTopicById(id);
     }
 
     @RequestMapping(value = "/topics", method = RequestMethod.POST)
-    public void saveTopic(@RequestBody Topic topic) {
-        topicService.saveTopic(topic);
+    public void save(@RequestBody Topic topic) {
+        topicService.save(topic);
     }
 
 }

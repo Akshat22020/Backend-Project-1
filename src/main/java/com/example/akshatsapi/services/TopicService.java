@@ -1,40 +1,29 @@
 package com.example.akshatsapi.services;
-
 import com.example.akshatsapi.controller.Topic;
+import com.example.akshatsapi.Repository.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopicService {
 
-    List<Topic> topics = new ArrayList<>(
-            Arrays.asList(
-                    new Topic("101", "Spring Boot", "Spring Boot Description"),
-                    new Topic("102", "Data Structures", "Data Structures Description"),
-                    new Topic("103", "Competitive-Coding", "Competitive-Coding Description"),
-                    new Topic("104", "Microservices", "Microservices Description")
-            )
-    );
+    @Autowired
+    private TopicRepository topicRepository;
 
     public List<Topic> getAllTopics() {
-        return topics;
+        return topicRepository.findAll();
     }
 
     public Topic getTopicById(String id) {
-        return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        Optional<Topic> foundTopic = topicRepository.findById(id);
+        if(foundTopic.isPresent()) return foundTopic.get();
+        else return new Topic("N/A", "N/A", "N/A");
     }
 
-    public void saveTopic(Topic topic) {
-        topics.add(topic);
+    public void save(Topic topic) {
+        topicRepository.save(topic);
     }
-
-
-
 }
