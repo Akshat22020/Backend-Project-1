@@ -15,7 +15,7 @@ public class TopicController {
     // localhost:8080/
     @RequestMapping("/")
     public String home() {
-        return "Welcome to Course-API!";
+        return "Welcome to my backend proj!";
     }
 
     // localhost:8080/topics
@@ -33,4 +33,5 @@ public class TopicController {
     public void saveTopic(@RequestBody Topic topic) {
         topicService.saveTopic(topic);
     }
+
 }
