@@ -10,7 +10,7 @@ import java.util.List;
 public class TopicController {
 
     @Autowired    //--> auto wired does help the obect creation at runtime
-    private TopicService topicService;
+    private TopicService topicService;  //iinversion of control
 
     // localhost:8080/
     @RequestMapping(value = "/")
