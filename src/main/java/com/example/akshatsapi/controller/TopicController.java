@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 public class TopicController {
 
-    @Autowired
+    @Autowired    //--> auto wired does help the obect creation at runtime
     private TopicService topicService;
 
     // localhost:8080/
@@ -35,3 +35,6 @@ public class TopicController {
     }
 
 }
+//ioc -> inversion of control
+//object banana is not the resp of the developer , all a dev needs to do is to declear it , the object is created itself
+//by the springboot
